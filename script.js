@@ -1,36 +1,31 @@
 const choices = ['rock', 'paper', 'scissors']
 
-
-let computerSelection = function getComputerChoice() {
+function getComputerChoice() {
     return choices[Math.floor(Math.random() * choices.length)];
-}
-
-let playerSelection = function () {
-    return prompt("Rock, Paper, Scissors?");
 }
 
 function playRound(playerSelection, computerSelection) {
 
-    if (playerSelection.toLowerCase() == "rock") 
+    if (playerSelection === computerSelection)
     {
-        if (computerSelection == "rock")
-        {
-            console.log("Tie! You both chose 'Rock'")
-            return;
-        } else if (computerSelection == "paper")
-        {
-            console.log("You lose :( 'Paper' beats 'Rock'")
-            return false;
-        }
-        else if (computerSelection == "scissors")
-        {
-            console.log("You win :) 'Rock beats 'Scissors'")
-            return true;
-        }
+        return `It's a tie! you both picked ${playerSelection}`
+    } else if (playerSelection === "rock" && computerSelection === "scissors")
+    {
+        return "You win! Rock beats Scissors";
+    }else if (playerSelection === "paper" && computerSelection === "rock") 
+    {
+        return "You win! Paper beats Rock";
+    } else if (playerSelection === "scissors" && computerSelection === "paper") 
+    {
+        return "You win! Scissors beats Paper";
+    } else 
+    {
+        return `You lose! ${computerSelection} beats ${playerSelection}`;
     }
-
     
-
-
 }
 
+
+
+const playerSelection = prompt("Rock, Paper, Scissors?").toLowerCase();
+const computerSelection =  getComputerChoice();
